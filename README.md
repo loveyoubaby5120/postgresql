@@ -5,6 +5,8 @@
 
 ```sql
 # 查询jsonb 某个字段 并排序
+# https://www.cnblogs.com/alianbog/p/5658156.html
+SELECT "id", "subscribe":: json->0->'str' FROM product ORDER BY (subscribe->0->'str') desc;
 SELECT "id", "subscribe":: json->0->'str' FROM product ORDER BY (subscribe->>'str') desc;
 
 # 修改数组类型json
