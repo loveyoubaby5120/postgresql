@@ -6,7 +6,6 @@
     * [json处理函数](#JSONFUN)
 
 # <a name="SQL">SQL</a>
-# <a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
 ```sql
@@ -21,7 +20,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 ```
 
 # <a name="SQL">SQL</a>
-<br/>
 # <a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
