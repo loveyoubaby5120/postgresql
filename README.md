@@ -5,7 +5,7 @@
     * [json创建函数](#JSONCREATE)
     * [json处理函数](#JSONFUN)
 
-# <a name="SQL">SQL</a>
+#<a name="SQL">SQL</a>
 <br/>
 
 ```sql
@@ -21,7 +21,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-# <a name="OPERATOR">json和jsonb的操作符</a>
+#<a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
 |操作符|右操作符类型|描述|示例|结果|
@@ -35,7 +35,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-# <a name="JSONB">jsonb额外操作符</a>
+#<a name="JSONB">jsonb额外操作符</a>
 <br/>
 
 |操作符|右操作符类型|描述|示例|结果|
@@ -52,7 +52,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-# <a name="JSONCREATE">json创建函数</a>
+#<a name="JSONCREATE">json创建函数</a>
 <br/>
 
 |函数|描述|示例|结果|
@@ -67,7 +67,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-# <a name="JSONFUN">json处理函数</a>
+#<a name="JSONFUN">json处理函数</a>
 <br/>
 
 |函数|返回类型|描述|示例|结果|
@@ -75,7 +75,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 |<pre>`json_array_length(json)`<br/><br/>`jsonb_array_length(jsonb)`</pre>|int|返回Json数组最外层元素个数|<pre>`select json_array_length(`<br/>`'[1,2,3,{"f1":1,"f2":[5,6]},4]');`</pre>|<pre>`5`</pre>|
 |<pre>`json_each(json)`<br/><br/>`jsonb_each(jsonb)`</pre>|setof key text, value json<br/><br/>setof key text, value jsonb|将最外层Json对象转换为键值对集合|<pre>`select json_each('{"a":"foo", "b":"bar"}');`</pre>|<pre>`(a,"""foo""")`<br/><br/>`(b,"""bar""")`</pre>|
 |<pre>`json_each_text(json)`<br/><br/>`jsonb_each_text(jsonb)`</pre>|setof key text, value text|将最外层Json对象转换为键值对集合，且value为text类型|<pre>`select json_each_text('{"a":"foo", "b":"bar"}');`</pre>|<pre>`(a,foo)`<br/><br/>`(b,bar)`</pre>|
-|<pre>`json_extract_path(from_json json,VARIADIC path_elems text[])`<br/><br/>`jsonb_extract_path(from_json jsonb,VARIADIC path_elems text[])`</pre>|json<br/><br/>jsonb|返回path_elems指向的value，同操作符#>|<pre>`select json_extract_path('{"f2":{"f3":1},"f4":{"f5":99,"f6":"foo"}}','f4');`</pre>|<pre>`{"f5":99,"f6":"foo"}`</pre>|
+|<pre>`json_extract_path(`<br/>`from_json json,VARIADIC path_elems text[])`<br/><br/>`jsonb_extract_path(from_json jsonb,VARIADIC path_elems text[])`</pre>|json<br/><br/>jsonb|返回path_elems指向的value，同操作符#>|<pre>`select json_extract_path('{"f2":{"f3":1},"f4":{"f5":99,"f6":"foo"}}','f4');`</pre>|<pre>`{"f5":99,"f6":"foo"}`</pre>|
 
 
 
