@@ -21,7 +21,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-#<a name="OPERATOR">json和jsonb的操作符</a>
+# <a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
 |操作符|右操作符类型|描述|示例|结果|
@@ -35,7 +35,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-#<a name="JSONB">jsonb额外操作符</a>
+# <a name="JSONB">jsonb额外操作符</a>
 <br/>
 
 |操作符|右操作符类型|描述|示例|结果|
@@ -52,7 +52,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-#<a name="JSONCREATE">json创建函数</a>
+# <a name="JSONCREATE">json创建函数</a>
 <br/>
 
 |函数|描述|示例|结果|
@@ -67,7 +67,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 <br/>
-#<a name="JSONFUN">json处理函数</a>
+# <a name="JSONFUN">json处理函数</a>
 <br/>
 
 |函数|返回类型|描述|示例|结果|
