@@ -19,7 +19,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 ```
 
-# <a name="SQL">SQL</a>
+
 # <a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
@@ -33,7 +33,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 |#>>| text[] |在指定的路径获取JSON对象为 text|<pre>`select '{"a":[1,2,3],"b":[4,5,6]}'::json#>>'{a,2}';`</pre>|<pre>`3`</pre>|
 
 
-<br/>
 # <a name="JSONB">jsonb额外操作符</a>
 <br/>
 
@@ -50,7 +49,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 |#-| integer |删除指定路径下的域或元素（如果是json数组，且整数值是负的，则索引值从右边算起）|<pre>`select '["a", {"b":1}]'::jsonb #- '{1,b}';`</pre>|<pre>`["a", {}]`</pre>|
 
 
-<br/>
 # <a name="JSONCREATE">json创建函数</a>
 <br/>
 
@@ -65,7 +63,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 |<pre>`json_object(`<br/>`keys text[], `<br/>`values text[])`<br/><br/>`jsonb_object(`<br/>`keys text[], `<br/>`values text[])`</pre>|分别从两组text[]中获取键和值，与一维数组类似。|<pre>`select json_object('{a, b}', '{1,2}');`</pre>|<pre>`{"a" : "1",`<br/>` "b" : "2"}`</pre>|
 
 
-<br/>
 # <a name="JSONFUN">json处理函数</a>
 <br/>
 
