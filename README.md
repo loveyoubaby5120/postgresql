@@ -6,6 +6,7 @@
     * [json处理函数](#JSONFUN)
 
 # <a name="SQL">SQL</a>
+# <a name="OPERATOR">json和jsonb的操作符</a>
 <br/>
 
 ```sql
