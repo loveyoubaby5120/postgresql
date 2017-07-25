@@ -21,7 +21,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 # <a name="OPERATOR">json和jsonb的操作符</a>
 
-|操作符|右操作符类型|描述|示例|结果|
+|操作符|右操作符类型|描述说明|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
 |->| int |获取JSON数组元素（索引从0开始）|<pre>`select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;`</pre>|<pre>`{"c":"baz"}`</pre>|
 |->| text |通过键获取值|<pre>`select '{"a": {"b":"foo"}}'::json->'a';`</pre>|<pre>`{"b":"foo"}`</pre>|
@@ -33,7 +33,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 # <a name="JSONB">jsonb额外操作符</a>
 
-|操作符|右操作符类型|描述|示例|结果|
+|操作符|右操作符类型|描述说明|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
 |@>| jsonb |左侧json最上层的值是否包含右边json对象|<pre>`select '{"a":{"b":2}}'::jsonb @> '{"b":2}'::jsonb;`<br/>`select '{"a":1, "b":2}'::jsonb @> '{"b":2}'::jsonb;`</pre>|<pre>`f`<br/>`t`</pre>|
 |<@| jsonb |左侧json对象是否包含于右侧json最上层的值内|<pre>`select '{"b":2}'::jsonb <@ '{"a":1, "b":2}'::jsonb;`</pre>|<pre>`t`</pre>|
@@ -48,7 +48,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 # <a name="JSONCREATE">json创建函数</a>
 
-|函数|描述|示例|结果|
+|函数|描述说明|示例|结果|
 |:---:|:---:|:---|:---:|
 |<pre>`to_json(anyelement)`<br/><br/>`to_jsonb(anyelement)`</pre>|返回json或jsonb类型的值。数组和复合被转换（递归）成数组和对象。另外除数字、布尔、NULL值（直接使用NULL抛出错误）外，其他标量必须有类型转换。（此处请参考原文）|<pre>`select to_json('3'::int);`</pre>|<pre>`3`</pre>|
 |<pre>`array_to_json`<br/>`(anyarray[, `<br/>`pretty_bool])`</pre>|以JSON数组返回该数组。PostgreSQL多维数组变成JSON数组中的数组。如果pretty_bool 为真，则在维度1元素之间添加换行。|<pre>`select array_to_json('{{1,5},{99,100}}'::int[],true);`</pre>|<pre>`[[1,5], +`<br/>`[99,100]]`</pre>|
@@ -61,7 +61,7 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 # <a name="JSONFUN">json处理函数</a>
 
-|函数|返回类型|描述|示例|结果|
+|函数|返回类型|描述说明|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
 |<pre>`json_array_length(json)`<br/><br/>`jsonb_array_length(jsonb)`</pre>|int|返回Json数组最外层元素个数|<pre>`select json_array_length(`<br/>`'[1,2,3,{"f1":1,"f2":[5,6]},4]');`</pre>|<pre>`5`</pre>|
 |<pre>`json_each(json)`<br/><br/>`jsonb_each(jsonb)`</pre>|setof key text, value json<br/><br/>setof key text, value jsonb|将最外层Json对象转换为键值对集合|<pre>`select json_each('{"a":"foo", "b":"bar"}');`</pre>|<pre>`(a,"""foo""")`<br/><br/>`(b,"""bar""")`</pre>|
