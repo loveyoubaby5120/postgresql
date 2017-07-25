@@ -21,7 +21,8 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 |:---:|:---:|:---:|:---:|:---:|
 |->|int|获取JSON数组元素（索引从0开始）|<pre>`select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;`</pre>|<pre>`{"c":"baz"}`</pre>|
 
-<div class="highlight highlight-source-sql refined-github-linkified-code"><pre><code>select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;</code></pre><div>
+<!-- .highlight .highlight-source-sql .refined-github-linkified-code-->
+<div><pre><code>select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;</code></pre><div>
 
 <table class="table table-bordered table-striped table-condensed">  
     <thead>
