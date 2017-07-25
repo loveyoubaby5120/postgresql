@@ -19,22 +19,9 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 |操作符|右操作符类型|描述|示例|结果|
 |:---:|:---:|:---:|:---:|:---:|
-|->|int|获取JSON数组元素（索引从0开始）|<pre>`select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;`</br>`aaabbbccc`</pre>|<pre>`{"c":"baz"}`</pre>|
+|->|int|获取JSON数组元素（索引从0开始）|<pre>`select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;`</pre>|<pre>`{"c":"baz"}`</pre>|
 
 <pre class="sql"><code class="sql">select '[{"a":"foo"},{"b":"bar"},{"c":"baz"}]'::json->2;</code></pre>
-
-+---------------+------------------+
-|               | code             |
-+===============+==================+
-| Bananas       | ```{.sql}        |
-|               | select * from a; |
-|               | select * from b; |
-|               | ```              |
-+---------------+------------------+
-| Apples        | ```              |
-|               | foo              |
-|               | ```              |
-+---------------+------------------+
 
 <table class="table table-bordered table-striped table-condensed">  
     <thead>
