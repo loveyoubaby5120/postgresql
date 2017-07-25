@@ -6,7 +6,6 @@
     * [json处理函数](#JSONFUN)
 
 # <a name="SQL">SQL</a>
-<br/>
 
 ```sql
 # 查询jsonb 某个字段 并排序
@@ -21,7 +20,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 # <a name="OPERATOR">json和jsonb的操作符</a>
-<br/>
 
 |操作符|右操作符类型|描述|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
@@ -34,7 +32,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 # <a name="JSONB">jsonb额外操作符</a>
-<br/>
 
 |操作符|右操作符类型|描述|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
@@ -50,7 +47,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 # <a name="JSONCREATE">json创建函数</a>
-<br/>
 
 |函数|描述|示例|结果|
 |:---:|:---:|:---|:---:|
@@ -64,7 +60,6 @@ update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 
 
 
 # <a name="JSONFUN">json处理函数</a>
-<br/>
 
 |函数|返回类型|描述|示例|结果|
 |:---:|:---:|:---:|:---|:---:|
