@@ -1,6 +1,7 @@
 * SYNTAX
     * [SQL](#SQL)
     * [json和jsonb的操作符](#OPERATOR)
+    * [数组操作符](#ARRAYOPERATOR)
     * [jsonb额外操作符](#JSONB)
     * [json创建函数](#JSONCREATE)
     * [json处理函数](#JSONFUN)
@@ -16,8 +17,28 @@ SELECT "id", "subscribe":: json->0->'str' FROM product ORDER BY (subscribe->>'st
 # 修改数组类型json
 update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 4.3, "commission": 4.4}]' where id='111';
 
+# 修改json字段的键名 把SubChid中的'C'改成'c'？
+update test set limitinfo = limitinfo - 'SubChild' || jsonb_build_object('Subchild', limitinfo -> 'SubChild');
+update test set limitinfo = jsonb_set ( limitinfo - 'SubChild', '{Subchild}', limitinfo -> 'SubChild');
+
 ```
 
+# <a name="ARRAYOPERATOR">数组操作符</a>
+|操作符|描述说明|示例|结果|
+|:---:|:---:|:---|:---:|
+|=|相等|ARRAY[1.1,2.1,3.1]::int[] = ARRAY[1,2,3]|t|
+|<>|不相等|ARRAY[1,2,3] <> ARRAY[1,2,4]|t|
+|<|小于|ARRAY[1,2,3] < ARRAY[1,2,4]|t|
+|>|大于|ARRAY[1,4,3] > ARRAY[1,2,4]|t|
+|<=|小于等于|ARRAY[1,2,3] <= ARRAY[1,2,3]|t|
+|>=|大于等于|ARRAY[1,4,3] >= ARRAY[1,4,3]|t|
+|@>|包含|ARRAY[1,4,3] @> ARRAY[3,1]|t|
+|<@|包含在|ARRAY[2,7] <@ ARRAY[1,7,4,2,6]|t|
+|&&|重叠（有共同的元素）|ARRAY[1,4,3] && ARRAY[2,1]|t|
+|\|\||连接两个数组|ARRAY[1,2,3] \|\| ARRAY[4,5,6]|{1,2,3,4,5,6}|
+|\|\||连接两个数组|ARRAY[1,2,3] \|\| ARRAY[[4,5,6],[7,8,9]]|{{1,2,3},{4,5,6},{7,8,9}}||
+|\|\||连接元素和数组|3 \|\| ARRAY[4,5,6]|{3,4,5,6}|
+|\|\||连接数组和元素|ARRAY[4,5,6] \|\| 7|	{4,5,6,7}|
 
 # <a name="OPERATOR">json和jsonb的操作符</a>
 
