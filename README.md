@@ -2,6 +2,7 @@
     * [SQL](#SQL)
     * [json和jsonb的操作符](#OPERATOR)
     * [数组操作符](#ARRAYOPERATOR)
+    * [数组函数](#ARRAYFUN)
     * [jsonb额外操作符](#JSONB)
     * [json创建函数](#JSONCREATE)
     * [json处理函数](#JSONFUN)
@@ -39,6 +40,23 @@ update test set limitinfo = jsonb_set ( limitinfo - 'SubChild', '{Subchild}', li
 |\|\||连接两个数组|ARRAY[1,2,3] \|\| ARRAY[[4,5,6],[7,8,9]]|{{1,2,3},{4,5,6},{7,8,9}}||
 |\|\||连接元素和数组|3 \|\| ARRAY[4,5,6]|{3,4,5,6}|
 |\|\||连接数组和元素|ARRAY[4,5,6] \|\| 7|	{4,5,6,7}|
+
+
+# <a name="ARRAYFUN">数组函数</a>
+|操作符|返回类型|描述说明|示例|结果|
+|:---:|:---:|:---:|:---|:---:|
+|array_append(anyarray, anyelement)|anyarray|向数组追加一个元素|array_append(ARRAY[1,2], 3)|{1,2,3}|
+|array_cat(anyarray, anyarray)| anyarray |连接两个数组|array_cat(ARRAY[1,2,3], ARRAY[4,5])|{1,2,3,4,5}|
+|array_ndims(anyarray)|int|返回数组的维数|array_ndims(ARRAY[[1,2,3], [4,5,6]])|2|
+|array_dims(anyarray)|text|文本表示形式返回数组的维数|array_dims(ARRAY[[1,2,3], [4,5,6]])|[1:2][1:3]|
+|array_fill(anyelement, int[], [, int[]])| anyarray |returns an array initialized with supplied value and dimensions, optionally with lower bounds other than 1|array_fill(7, ARRAY[3], ARRAY[2])|[2:4]={7,7,7}|
+|array_length(anyarray, int)|int|返回请求的数组维数的长度|array_length(array[1,2,3], 1)|3|
+|array_lower(anyarray, int)|int|返回所请求数组维数的下标|array_lower('[0:2]={1,2,3}'::int[], 1)|0|
+|array_prepend(anyelement, anyarray)|anyarray|向数组前追加元素|array_prepend(1, ARRAY[2,3])|{1,2,3}|
+|array\_to\_string(anyarray, text [, text])|text|将数组元素用提供的分隔符分割和（可选的）替换空字符串|array\_to\_string(ARRAY[1, 2, 3, NULL, 5], ',', '*')|1,2,3,\*,5|
+|array_upper(anyarray, int)|int|returns upper bound of the requested array dimension|array_upper(ARRAY[1,8,3,7], 1)|4|
+|string_to_array(text, text [, text])|text[]|使用提供的分隔符拆分数组和（可选的）替换字符串为空字符串|string_to_array('xx~\^~yy~\^~zz', '~\^~', 'yy')|{xx,NULL,zz}|
+|unnest(anyarray)|setof anyelement|扩展数组为行级|unnest(ARRAY[1,2])|1<br/>2<br/><br/>(2 rows)|
 
 # <a name="OPERATOR">json和jsonb的操作符</a>
 
