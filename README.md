@@ -15,6 +15,37 @@
 SELECT "id", "subscribe":: json->0->'str' FROM product ORDER BY (subscribe->0->'str') desc;
 SELECT "id", "subscribe":: json->0->'str' FROM product ORDER BY (subscribe->>'str') desc;
 
+#查询数组
+select * from user where 1 = ANY('[1,2,3]')
+select * from user where 1 = ALL('[1,1,1]')
+
+#先转换 options 这个 json 字段，然后再按一般查 json 的方法查询即可
+/* 
+[
+    {
+        "option_title" : "A选项",
+        "score" : "1",
+        "creation_date" : "2016-02-25T17:25:55+08:00"
+    }, {
+        "option_title" : "B选项",
+        "score" : "0",
+        "creation_date" : "2016-02-25T17:25:55+08:00"
+    }, {
+        "option_title" : "C选项",
+        "score" : "0",
+        "creation_date" : "2016-02-25T17:25:55+08:00"
+    }, {
+        "option_title" : "D选项",
+        "score" : "0",
+        "creation_date" : "2016-02-25T17:25:55+08:00"
+    }
+]
+*/
+select * from (
+    select id, title, json_array_elements(options) as data from question
+) t
+where data->>'option_title'::varchar = 'A选项';
+
 # 修改数组类型json
 update product set subscribe = '[{"str": 1.1, "end": 2.2, "year_earnings_rate": 4.3, "commission": 4.4}]' where id='111';
 
